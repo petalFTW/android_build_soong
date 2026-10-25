@@ -17,6 +17,11 @@
 source $(cd $(dirname $BASH_SOURCE) &> /dev/null && pwd)/../make/shell_utils.sh
 require_top
 
+# Resolve petalOS release status before product configuration.
+if [[ -f "$TOP/vendor/petal/build/maintainer/hook.sh" ]]; then
+    source "$TOP/vendor/petal/build/maintainer/hook.sh"
+fi
+
 # To track how long we took to startup.
 case $(uname -s) in
   Darwin)
